@@ -10,4 +10,4 @@ elif int(num[len(num) - 1]) == 0:
 {num[len(num) - 1]} and is 0")
 else:
     print(f"Last digit of {number} is \
-{num[len(num) - 1]} and is less than 6 and not 0")
+-{num[len(num) - 1]} and is less than 6 and not 0")
