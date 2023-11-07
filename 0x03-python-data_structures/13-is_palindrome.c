@@ -8,38 +8,35 @@
  */
 int is_palindrome(listint_t **head)
 {
-int *int_array, left = 0, right = 0;
-unsigned int len = 0, count = 0;
-listint_t *current = *head;
-
 if (*head == NULL)
-	return (1);
-while (current != NULL)
-{
-	len++;
-	current = current->next;
+        return (1);
+
+    listint_t *slow = *head, *fast = *head, *prev = NULL;
+    listint_t *first_half = *head, *second_half = NULL;
+
+    while (fast != NULL && fast->next != NULL)
+    {
+        fast = fast->next->next;
+        prev = slow;
+        slow = slow->next;
+    }
+    if (fast != NULL)
+        slow = slow->next;
+    prev = NULL;
+    while (slow != NULL)
+    {
+listint_t *next_node = slow->next;
+slow->next = prev;
+prev = slow;
+slow = next_node;
 }
-int_array = (int *)malloc(sizeof(int) * len);
-if (int_array == NULL)
-	return (-1);
-current = *head;
-while (current != NULL)
+second_half = prev;
+while (second_half != NULL)
 {
-	int_array[count] = current->n;
-	count++;
-	current = current->next;
+if (first_half->n != second_half->n)
+return (0);
+first_half = first_half->next;
+second_half = second_half->next;
 }
-right = len - 1;
-while (left < right)
-{
-	if (int_array[left] != int_array[right])
-	{
-		free(int_array);
-		return (0);
-	}
-	left++;
-	right--;
-}
-free(int_array);
 return (1);
 }
