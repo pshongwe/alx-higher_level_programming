@@ -29,10 +29,17 @@ while (current != NULL)
 	count++;
 	current = current->next;
 }
+right = len - 1;
 while (left < right)
 {
 	if (int_array[left] != int_array[right])
+	{
+		free(int_array);
 		return (0);
+	}
+	left++;
+	right--;
 }
+free(int_array);
 return (1);
 }
