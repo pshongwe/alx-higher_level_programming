@@ -56,7 +56,7 @@ for (x = 0; x < size; x++)
 elem = ((PyListObject *)p)->ob_item[x];
 printf("Element %ld: %s\n", x);
 if (PyBytes_Check(elem))
-			print_python_bytes(elem);
+print_python_bytes(elem);
 }
 }
 
