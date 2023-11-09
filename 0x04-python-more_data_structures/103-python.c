@@ -24,7 +24,7 @@ bytes = ((PyVarObject *)(p))->ob_size;
 buffer = ((PyBytesObject *)p)->ob_sval;
 printf("  size: %ld\n", bytes);
 printf("  trying string: %s\n", buffer);
-lim = (size >= 10) ? 10 : size + 1
+lim = (bytes >= 10) ? 10 : bytes + 1;
 printf("  first %ld bytes: ", lim);
 for (x = 0; x < lim; x++)
 {
