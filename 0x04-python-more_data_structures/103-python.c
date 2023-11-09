@@ -24,12 +24,14 @@ bytes = ((PyVarObject *)(p))->ob_size;
 buffer = ((PyBytesObject *)p)->ob_sval;
 printf("  size: %ld\n", bytes);
 printf("  trying string: %s\n", buffer);
-printf("  first 10 bytes: ");
-for (i = 0; i < 10 && i < bytes; i++)
+lim = (size >= 10) ? 10 : size + 1
+printf("  first %ld bytes: ", lim);
+for (x = 0; x < lim; i++)
 {
-printf("%02x", (unsigned char)bytes->ob_sval[i]);
-if (i < size - 1)
-printf(" ");
+if (buffer[x] >= 0)
+printf(" %02x", buffer[x]);
+else
+printf(" %02x", 256 + buffer[x]);
 }
 printf("\n");
 }
