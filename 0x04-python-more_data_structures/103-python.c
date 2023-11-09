@@ -26,7 +26,7 @@ printf("  size: %ld\n", bytes);
 printf("  trying string: %s\n", buffer);
 lim = (size >= 10) ? 10 : size + 1
 printf("  first %ld bytes: ", lim);
-for (x = 0; x < lim; i++)
+for (x = 0; x < lim; x++)
 {
 if (buffer[x] >= 0)
 printf(" %02x", buffer[x]);
