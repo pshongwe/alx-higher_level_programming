@@ -11,7 +11,7 @@ void print_python_list(PyObject *p);
  */
 void print_python_bytes(PyObject *p)
 {
-long int size, lim, x;
+long int bytes, lim, x;
 char *buffer;
 
 printf("[.] bytes object info\n");
