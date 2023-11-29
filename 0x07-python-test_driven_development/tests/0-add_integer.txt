@@ -1,0 +1,62 @@
+>>> add_integer = __import__('0-add_integer').add_integer
+
+# Test with two positive integers
+>>> add_integer(1, 2)
+3
+
+# Test with a positive and a negative integer
+>>> add_integer(100, -2)
+98
+
+# Test with two negative integers
+>>> add_integer(-4, -5)
+-9
+
+# Test with zero and a positive integer
+>>> add_integer(0, 5)
+5
+
+# Test with zero and a negative integer
+>>> add_integer(0, -3)
+-3
+
+# Test with a single argument
+>>> add_integer(2)
+100
+
+# Test with a float and an integer
+>>> add_integer(100.3, -2)
+98
+
+# Test with two floats
+>>> add_integer(3.7, 4.3)
+7
+
+# Test with a very large integer
+>>> add_integer(99999999, 1)
+100000000
+
+# Test with an integer and a non-numeric type (string)
+>>> add_integer(4, "School")
+Traceback (most recent call last):
+...
+TypeError: b must be an integer
+
+# Test with a non-numeric type (string) as the first argument
+>>> add_integer("Test", 4)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+# Test with non-numeric types (NoneType)
+>>> add_integer(None, 1)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
+# Test with two non-numeric types (NoneType and String)
+>>> add_integer(None, "Test")
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+
