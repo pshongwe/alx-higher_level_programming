@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" to json string """
+""" from json string """
 import json
 
 
