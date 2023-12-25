@@ -12,11 +12,19 @@ class Student:
     def to_json(self, attrs=None):
         """Retrieve a dictionary representation of a Student instance."""
         obj = self.__dict__.copy()
+
         if not attrs:  # If attrs is None, return the whole dictionary
-            return obj
-        if not all(isinstance(attr, str) for attr in attrs):
-            return obj
-        return {attr: obj[attr] for attr in attrs if attr in obj}
+            sorted_obj = dict(sorted(
+                obj.items(),
+                key=lambda x: ['age', 'last_name', 'first_name'].index(x[0])))
+            return sorted_obj
+        result = {}
+        sorting_order = ['age', 'last_name', 'first_name']
+
+        for attr in sorting_order:
+            if attr in obj and (attrs is None or attr in attrs):
+                result[attr] = obj[attr]
+        return result
 
     def reload_from_json(self, json):
         """Replace attributes of the Student object with
