@@ -26,4 +26,3 @@ class Student:
             if attr in attrs and attr in obj:
                 result[attr] = obj[attr]
         return result
-
