@@ -18,11 +18,10 @@ class Student:
                 obj.items(),
                 key=lambda x: ['age', 'last_name', 'first_name'].index(x[0])))
             return sorted_obj
-
         result = {}
         sorting_order = ['age', 'last_name', 'first_name']
 
         for attr in sorting_order:
-            if attr in attrs and attr in obj:
+            if attr in obj and (attrs is None or attr in attrs):
                 result[attr] = obj[attr]
         return result
