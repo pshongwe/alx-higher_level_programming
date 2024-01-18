@@ -4,7 +4,7 @@
 >>> matrix = [[3, "9"], [15, 3]]
 >>> matrix_divided(matrix, 3)
 Traceback (most recent call last):
-TypeError: unsupported operand type(s) for /: 'str' and 'int'
+TypeError: matrix must be a matrix (list of lists) of integers/floats
 
 # Test matrix None
 >>> matrix = None
@@ -15,8 +15,7 @@ TypeError: matrix must be a matrix (list of lists) of integers/floats
 # Test matrix []
 >>> matrix = []
 >>> print(matrix_divided(matrix, 3))
-Traceback (most recent call last):
-TypeError: matrix must be a matrix (list of lists) of integers/floats
+[]
 
 # Test matrix list of list
 >>> matrix = [[]]
@@ -67,13 +66,11 @@ TypeError: matrix must be a matrix (list of lists) of integers/floats
 Traceback (most recent call last):
 TypeError: matrix must be a matrix (list of lists) of integers/floats
 
-
+# Test division by positive integer
 >>> matrix = [
 ...     [1, 2, 3],
 ...     [4, 5, 6]
 ... ]
-
-# Test division by positive integer
 >>> matrix_divided(matrix, 3)
 [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
 
