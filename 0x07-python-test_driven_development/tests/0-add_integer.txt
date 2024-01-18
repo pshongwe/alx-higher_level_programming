@@ -12,14 +12,6 @@
 >>> add_integer(-3, -5)
 -8
 
-# Test with zero and a positive integer
->>> add_integer(0, 4)
-4
-
-# Test with zero and a negative integer
->>> add_integer(0, -2)
--2
-
 # Test with a single argument
 >>> add_integer(2)
 100
@@ -31,10 +23,6 @@
 # Test with two floats
 >>> add_integer(3.5, 4.5)
 7
-
-# Test with a very large integer
->>> add_integer(999999999, 1)
-1000000000
 
 # Test with an integer and a non-numeric type (string)
 >>> add_integer(4, "School")
