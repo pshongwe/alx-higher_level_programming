@@ -26,8 +26,8 @@ def matrix_divided(matrix, div):
     for row in matrix:
         divided_row = []
         for element in row:
-            if not isinstance(element, float) or \
-               not isinstance(element, int):
+            if not isinstance(element, int) and \
+               not isinstance(element, float):
                 raise TypeError(m)
             result = round(element / div, 2)
             divided_row.append(result)
