@@ -1,9 +1,10 @@
 >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
 
-# Test div None
->>> print(matrix_divided(matrix, None))
+# Test non-int or float type
+>>> matrix = [[3, "9"], [15, 3]]
+>>> matrix_divided(matrix, 3)
 Traceback (most recent call last):
-TypeError: div must be a number
+TypeError: unsupported operand type(s) for /: 'str' and 'int'
 
 # Test matrix None
 >>> matrix = None
@@ -46,6 +47,11 @@ TypeError: Each row of the matrix must have the same size
 ...     [4, 5, 6]
 ... ]
 >>> print(matrix_divided(matrix, "not a number"))
+Traceback (most recent call last):
+TypeError: div must be a number
+
+# Test div None
+>>> print(matrix_divided(matrix, None))
 Traceback (most recent call last):
 TypeError: div must be a number
 
