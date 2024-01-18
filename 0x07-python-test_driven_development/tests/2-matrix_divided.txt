@@ -18,3 +18,8 @@
 # Test float int combo
 >>> matrix_divided(matrix, 3)
 [[0.43, 0.67, 1.0], [1.33, 1.67, 2.1]]
+
+# Test division by zero
+>>> matrix_divided(matrix, 0)
+Traceback (most recent call last):
+ZeroDivisionError: division by zero
