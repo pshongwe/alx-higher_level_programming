@@ -56,12 +56,8 @@ TypeError: a must be an integer
 
 # Test large positive number
 >>> add_integer(float('999999'), 1)
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
+1000000
 
 # Test large negative number
 add_integer(-float(999999), 1)
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
+999998
