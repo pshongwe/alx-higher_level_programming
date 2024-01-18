@@ -5,6 +5,7 @@ It includes handling for different data types and error checking.
 The primary function is add_integer.
 """
 
+
 def add_integer(a, b=98):
     """
     Adds two numbers, casting floats to integers.
@@ -16,5 +17,4 @@ def add_integer(a, b=98):
 
     a = int(a)
     b = int(b)
-    
     return a + b
