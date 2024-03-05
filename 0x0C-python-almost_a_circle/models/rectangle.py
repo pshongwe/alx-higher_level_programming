@@ -6,6 +6,8 @@ from models.base import Base
 class Rectangle(Base):
     """ class definition """
 
+    print_symbol = "#"
+
     def __init__(self, width, height, x=0, y=0, id=None):
         """ initialize it """
         self.width = width
@@ -69,3 +71,15 @@ class Rectangle(Base):
     def area(self):
         """ area of rectangle """
         return self.__width * self.__height
+
+    def display(self):
+        """ display """
+        if self.width == 0 or self.height == 0:
+            print()
+            return
+
+        [print("") for _ in range(self.y)]
+        for _ in range(self.height):
+            [print(" ", end="") for _ in range(self.x)]
+            [print("#", end="") for _ in range(self.width)]
+            print("")
