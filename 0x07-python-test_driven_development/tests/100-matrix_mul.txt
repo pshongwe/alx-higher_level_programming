@@ -17,3 +17,41 @@ Test error for incompatible matrix sizes:
 >>> print(matrix_mul(m_a, m_b))
 Traceback (most recent call last):
 ValueError: m_a and m_b can't be multiplied
+
+Test missing one argument:
+>>> print(matrix_mul([[1, 2]]))
+Traceback (most recent call last):
+TypeError: matrix_mul() missing 1 required positional argument: 'm_b'
+
+Test missing two arguments:
+>>> print(matrix_mul())
+Traceback (most recent call last):
+TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+
+Test m_a is a string and m_b is a list of lists of numbers:
+>>> m_a = "not a list"
+>>> m_b = [[1, 2], [3, 4]]
+>>> print(matrix_mul(m_a, m_b))
+Traceback (most recent call last):
+TypeError: m_a must be a list
+
+Test m_b must be a list
+>>> m_a = [[1, 2], [3, 4]]
+>>> m_b = "not a list"
+>>> print(matrix_mul(m_a, m_b))
+Traceback (most recent call last):
+TypeError: m_b must be a list
+
+Test when m_a is a list of integers and m_b is a list of lists of numbers:
+>>> m_a = [1, 2, 3]
+>>> m_b = [[1, 2], [3, 4], [5, 6]]
+>>> print(matrix_mul(m_a, m_b))
+Traceback (most recent call last):
+TypeError: m_a must be a list of lists
+
+Test when m_a is empty and m_b is a list of lists of numbers:
+>>> m_a = []
+>>> m_b = [[1, 2], [3, 4]]
+>>> print(matrix_mul(m_a, m_b))
+Traceback (most recent call last):
+ValueError: m_a can't be empty
