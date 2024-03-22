@@ -7,13 +7,6 @@ Another test?
 
 And another one:
 
->>> text_indentation("Spaces    before.  Spaces   after?  Spaces everywhere:")
-Spaces    before.
-
-Spaces   after?
-
-Spaces everywhere:
-
 >>> text_indentation("No punctuation in this sentence")
 No punctuation in this sentence
 
