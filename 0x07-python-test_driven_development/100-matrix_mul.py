@@ -3,22 +3,53 @@
 
 
 def matrix_mul(m_a, m_b):
-    """Multiply two matrices.
+    """multiply matrices a and b.
     """
-    if not all(isinstance(mat, list) and mat != [] for mat in [m_a, m_b]):
-        raise ValueError("m_a and m_b can't be empty")
+    if m_a == [] or m_a == [[]]:
+        raise ValueError("m_a can't be empty")
+    if m_b == [] or m_b == [[]]:
+        raise ValueError("m_b can't be empty")
 
-    for name, mat in [("m_a", m_a), ("m_b", m_b)]:
-        if not all(isinstance(row, list) for row in mat):
-            raise TypeError(f"{name} must be a list of lists")
-        if not all(isinstance(el, (int, float)) for row in mat for el in row):
-            raise TypeError(f"{name} should contain only integers or floats")
-        if not all(len(row) == len(mat[0]) for row in mat):
-            raise TypeError(f"each row of {name} must be of the same size")
+    if not isinstance(m_a, list):
+        raise TypeError("m_a must be a list")
+    if not isinstance(m_b, list):
+        raise TypeError("m_b must be a list")
+
+    if not all(isinstance(row, list) for row in m_a):
+        raise TypeError("m_a must be a list of lists")
+    if not all(isinstance(row, list) for row in m_b):
+        raise TypeError("m_b must be a list of lists")
+
+    if not all((isinstance(ele, int) or isinstance(ele, float))
+               for ele in [num for row in m_a for num in row]):
+        raise TypeError("m_a should contain only integers or floats")
+    if not all((isinstance(ele, int) or isinstance(ele, float))
+               for ele in [num for row in m_b for num in row]):
+        raise TypeError("m_b should contain only integers or floats")
+
+    if not all(len(row) == len(m_a[0]) for row in m_a):
+        raise TypeError("each row of m_a must should be of the same size")
+    if not all(len(row) == len(m_b[0]) for row in m_b):
+        raise TypeError("each row of m_b must should be of the same size")
 
     if len(m_a[0]) != len(m_b):
         raise ValueError("m_a and m_b can't be multiplied")
 
-    b_t = list(zip(*m_b))
-    return [[sum(a * b for a, b in zip(row_a, col_b))
-            for col_b in b_t] for row_a in m_a]
+    b_t = []
+    for r in range(len(m_b[0])):
+        new_row = []
+        for c in range(len(m_b)):
+            new_row.append(m_b[c][r])
+        b_t.append(new_row)
+
+    new_m = []
+    for row in m_a:
+        new_row = []
+        for col in b_t:
+            prod = 0
+            for i in range(len(b_t[0])):
+                prod += row[i] * col[i]
+            new_row.append(prod)
+        new_m.append(new_row)
+
+    return new_m
