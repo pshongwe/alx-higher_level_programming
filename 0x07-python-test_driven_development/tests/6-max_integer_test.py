@@ -38,6 +38,11 @@ class TestMaxInteger(unittest.TestCase):
         mixed_types = [1, '2', 3, '4']
         with self.assertRaises(TypeError):
             max_integer(mixed_types)
+    
+    def test_empty_list(self):
+        """Test an empty list."""
+        empty = []
+        self.assertEqual(max_integer(empty), None)
 
     def test_none_in_list(self):
         """Test a list containing None."""
