@@ -1,0 +1,19 @@
+Test matrix multiplication with square matrices:
+>>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+>>> m_a = [[1, 2], [3, 4]]
+>>> m_b = [[5, 6], [7, 8]]
+>>> print(matrix_mul(m_a, m_b))
+[[19, 22], [43, 50]]
+
+Test matrix multiplication with rectangular matrices:
+>>> m_a = [[1, 2, 3], [4, 5, 6]]
+>>> m_b = [[7, 8], [9, 10], [11, 12]]
+>>> print(matrix_mul(m_a, m_b))
+[[58, 64], [139, 154]]
+
+Test error for incompatible matrix sizes:
+>>> m_a = [[1, 2], [3, 4]]
+>>> m_b = [[5, 6, 7], [8, 9, 10], [11, 12, 13]]
+>>> print(matrix_mul(m_a, m_b))
+Traceback (most recent call last):
+ValueError: m_a and m_b can't be multiplied
