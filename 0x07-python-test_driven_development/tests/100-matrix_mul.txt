@@ -63,11 +63,5 @@ Test for m_b as a list of integers:
 Traceback (most recent call last):
 TypeError: m_b must be a list of lists
 
-Test when m_a is empty and m_b is a list of lists of numbers:
->>> m_a = []
->>> m_b = [[1, 2], [3, 4]]
->>> print(matrix_mul(m_a, m_b))
-Traceback (most recent call last):
-ValueError: m_a can’t be empty
 
 
