@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" define Student class """
+"""Student class."""
 
 
 class Student:
@@ -10,24 +10,19 @@ class Student:
         self.age = age
 
     def to_json(self, attrs=None):
-        """Retrieve a dictionary representation of a Student instance."""
-        obj = self.__dict__.copy()
+        """
+        Retrieve a dictionary representation of a Student instance.
 
-        if not attrs:  # If attrs is None, return the whole dictionary
-            sorted_obj = dict(sorted(
-                obj.items(),
-                key=lambda x: ['age', 'last_name', 'first_name'].index(x[0])))
-            return sorted_obj
-        result = {}
-        sorting_order = ['age', 'last_name', 'first_name']
-
-        for attr in sorting_order:
-            if attr in obj and (attrs is None or attr in attrs):
-                result[attr] = obj[attr]
-        return result
+        If attrs is a list of strings, only attributes contained in this
+        list are retrieved. Otherwise, all attributes are retrieved.
+        """
+        if isinstance(attrs, list) and all(isinstance(item, str)
+                                           for item in attrs):
+            return {key: value for key, value in self.__dict__.items()
+                    if key in attrs}
+        return self.__dict__
 
     def reload_from_json(self, json):
-        """Replace attributes of the Student object with
-values from JSON dictionary."""
-    for key, value in json.items():
-        setattr(self, key, value)
+        """Replace all attributes of the Student instance."""
+        for key, value in json.items():
+            setattr(self, key, value)
