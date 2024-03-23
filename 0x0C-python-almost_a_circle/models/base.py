@@ -2,6 +2,7 @@
 """ Base class """
 import json
 import os
+import csv
 
 
 class Base:
@@ -70,3 +71,40 @@ class Base:
             json_string = file.read()
         list_dicts = cls.from_json_string(json_string)
         return [cls.create(**d) for d in list_dicts]
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Serializes a list of objects to a CSV file."""
+        filename = cls.__name__ + ".csv"
+        with open(filename, "w", newline='') as csvfile:
+            if cls.__name__ == "Rectangle":
+                fieldnames = ["id", "width", "height", "x", "y"]
+            elif cls.__name__ == "Square":
+                fieldnames = ["id", "size", "x", "y"]
+            else:
+                raise TypeError("Unknown class")
+
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer.writeheader()
+            for obj in list_objs:
+                writer.writerow(obj.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Deserializes a list of objects from a CSV file."""
+        filename = cls.__name__ + ".csv"
+        if not os.path.exists(filename):
+            return []
+
+        with open(filename, "r", newline='') as csvfile:
+            if cls.__name__ == "Rectangle":
+                fieldnames = ["id", "width", "height", "x", "y"]
+            elif cls.__name__ == "Square":
+                fieldnames = ["id", "size", "x", "y"]
+            else:
+                raise TypeError("Unknown class")
+
+            reader = csv.DictReader(csvfile, fieldnames=fieldnames)
+            next(reader)  # Skip header
+            return [cls.create(**{k: int(v) for k, v in row.items()})
+                    for row in reader]
