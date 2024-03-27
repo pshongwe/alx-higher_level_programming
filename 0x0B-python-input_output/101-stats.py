@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import sys
+"""stats"""
 
 
 def print_stats(total_size, status_codes):
