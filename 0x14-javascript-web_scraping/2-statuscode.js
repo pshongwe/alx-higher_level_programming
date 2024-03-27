@@ -1,17 +1,18 @@
 #!/usr/bin/node
 
-const fs = require('fs');
+const request = require('request');
 
-if (process.argv.length < 4) {
-  console.error('Usage: ./1-writeme.js <file_path> <string_to_write>');
+if (process.argv.length < 3) {
+  console.error('Usage: ./2-statuscode.js <URL>');
   process.exit(1);
 }
 
-const filePath = process.argv[2];
-const content = process.argv[3];
+const url = process.argv[2];
 
-fs.writeFile(filePath, content, 'utf8', (err) => {
-  if (err) {
-    console.error(err);
+request(url, (error, response) => {
+  if (error) {
+    console.error(error);
+    return;
   }
+  console.log(`code: ${response.statusCode}`);
 });
